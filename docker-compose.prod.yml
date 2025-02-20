@@ -1,5 +1,5 @@
 services:
   web:
-    build: .
+    image: ghcr.io/datateknologerna-vid-abo-akademi/date-website:latest
     ports:
       - "$PORT:8000"
