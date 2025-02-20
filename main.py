@@ -39,13 +39,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-async def send_email(email, message):
+async def send_email(email, content):
     """Send an email with the given subject and body to the given email address."""
     message = EmailMessage()
     message["From"] = os.environ.get("EMAIL_SENDER")
     message["To"] = email
     message["Subject"] = "New contact form submission"
-    message.set_content(message)
+    message.set_content(content)
 
     await aiosmtplib.send(
         message,
@@ -54,7 +54,6 @@ async def send_email(email, message):
         username=os.environ.get("EMAIL_USER"),
         password=os.environ.get("EMAIL_PASSWORD"),
     )
-
 
 @app.get("/")
 def read_root():
