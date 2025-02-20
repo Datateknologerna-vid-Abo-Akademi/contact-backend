@@ -12,7 +12,8 @@ class ContactForm(pydantic.BaseModel):
     name: str
     company: str
     email: str
-    message: str
+    message: Optional[str]
+    options: Optional[str]
     turnstile: str = pydantic.Field(alias="cf-turnstile-response", default=None)
 
 
