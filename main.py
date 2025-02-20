@@ -13,12 +13,14 @@ class ContactForm(pydantic.BaseModel):
     company: str
     email: str
     message: str
-    turnstile = pydantic.Field(alias="cf-turnstile-response", default=None)
+    turnstile: str = pydantic.Field(alias="cf-turnstile-response", default=None)
+
 
 class SiteVerifyRequest(pydantic.BaseModel):
     secret: str
     response: str
     remoteip: Optional[str]
+
 
 class SiteVerifyResponse(pydantic.BaseModel):
     success: bool
