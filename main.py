@@ -71,5 +71,5 @@ def contact(form: ContactForm, background_tasks: BackgroundTasks):
     turnstile_res = SiteVerifyResponse(**res.json())
     if not turnstile_res.success:
         return {"error": "Failed to verify turnstile response."}, 400
-    email = os.environ["EMAIL_ADDRESS"]
+    email = os.environ.get("EMAIL_TARGET")
     background_tasks.add_task(send_email, email, message)
