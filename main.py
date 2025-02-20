@@ -20,7 +20,7 @@ class ContactForm(pydantic.BaseModel):
 class SiteVerifyRequest(pydantic.BaseModel):
     secret: str
     response: str
-    remoteip: Optional[str]
+    remoteip: str | None = None
 
 
 class SiteVerifyResponse(pydantic.BaseModel):
